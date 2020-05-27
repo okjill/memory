@@ -15,11 +15,6 @@ h1 {
   color: var(--navy);
 }
 
-/* img {
-  width: 100px;
-  height: 100px;
-} */
-
 .game-selector {
   justify-content: center;
   justify-items: center;
@@ -61,7 +56,17 @@ h1 {
 }
 
 .zodiac {
-  background-color: var(--white);
+  background-color: var(--blue);
+}
+
+.game-container > div.zodiac-card {
+  background-color: var(--blue);
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.game-container > div.numbers {
+  font-size: 1.5em;
 }
 
 .colors {
@@ -93,7 +98,6 @@ h1 {
 .faceup.zodiac img {
   height: 90%;
   width: 90%;
-  font-size: 0;
 }
 
 .faceup.colors {
@@ -144,15 +148,17 @@ h1 {
   0% {
     background-color: var(--red);
     pointer-events: none;
+    font-size: 1.5em;
+  }
+
+  100% {
+    font-size: 1.5em;
   }
 }
 
 @keyframes no-match-color {
   0% {
     pointer-events: none;
-  }
-
-  100% {
   }
 }
 

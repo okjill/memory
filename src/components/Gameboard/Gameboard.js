@@ -70,10 +70,10 @@ class Gameboard extends React.Component {
   findMatch() {
     let animationType;
     const newMatch = [];
-    if (this.props.gameType === 'numbers') {
-      animationType = 'no-match';
+    if (this.props.gameType === 'colors') {
+      animationType = 'no-match-colors';
     } else {
-      animationType = 'no-match-color';
+      animationType = 'no-match';
     }
 
     if (this.isMatch()) {

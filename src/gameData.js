@@ -13,18 +13,18 @@ const colors = ['navy', 'blue', 'fuchsia', 'olive', 'green', 'yellow', 'orange',
 const games = ['colors', 'zodiac', 'numbers'];
 
 const zodiac = [
-  'aries',
-  'taurus',
-  'gemini',
-  'cancer',
-  'leo',
-  'virgo',
-  'libra',
-  'scorpio',
-  'sagittarius',
-  'capricorn',
-  'aquarius',
-  'pisces'
+  'aries ♈',
+  'taurus ♉',
+  'gemini ♊',
+  'cancer ♋',
+  'leo ♌️',
+  'virgo ♍️',
+  'libra ♎️',
+  'scorpio ♏️',
+  'sagittarius ♐️',
+  'capricorn ♑️',
+  'aquarius ♒️',
+  'pisces ♓️'
 ];
 
 const numbers = getRandomValues();
