@@ -1,3 +1,5 @@
+import React from 'react';
+
 const getRandomValues = () => {
   const randomValues = new Set();
   while (randomValues.size < 12) {
@@ -13,18 +15,18 @@ const colors = ['navy', 'blue', 'fuchsia', 'olive', 'green', 'yellow', 'orange',
 const games = ['colors', 'zodiac', 'numbers'];
 
 const zodiac = [
-  'aries ♈',
-  'taurus ♉',
-  'gemini ♊',
-  'cancer ♋',
-  'leo ♌️',
-  'virgo ♍️',
-  'libra ♎️',
-  'scorpio ♏️',
-  'sagittarius ♐️',
-  'capricorn ♑️',
-  'aquarius ♒️',
-  'pisces ♓️'
+  <div>aries<br /><span role='img' aria-label='zodiac emoji aries' className='zodiac-emoji'>♈</span></div>,
+  <div>taurus<br /><span role='img' aria-label='zodiac emoji taurus' className='zodiac-emoji'>♉</span></div>,
+  <div>gemini<br /><span role='img' aria-label='zodiac emoji gemini' className='zodiac-emoji'>♊</span></div>,
+  <div>cancer<br /><span role='img' aria-label='zodiac emoji cancer' className='zodiac-emoji'>♋</span></div>,
+  <div>leo<br /><span role='img' aria-label='zodiac emoji leo' className='zodiac-emoji'>♌️</span></div>,
+  <div>virgo<br /><span role='img' aria-label='zodiac emoji virgo' className='zodiac-emoji'>♍️</span></div>,
+  <div>libra<br /><span role='img' aria-label='zodiac emoji libra' className='zodiac-emoji'>♎️</span></div>,
+  <div>scorpio<br /><span role='img' aria-label='zodiac emoji scorpio' className='zodiac-emoji'>♏️</span></div>,
+  <div>sagittarius<br /><span role='img' aria-label='zodiac emoji sagittarius' className='zodiac-emoji'>♐️</span></div>,
+  <div>capricorn<br /><span role='img' aria-label='zodiac emoji capricorn' className='zodiac-emoji'>♑️</span></div>,
+  <div>aquarius<br /><span role='img' aria-label='zodiac emoji aquarius' className='zodiac-emoji'>♒️</span></div>,
+  <div>pisces<br /><span role='img' aria-label='zodiac emoji pisces' className='zodiac-emoji'>♓️</span></div>
 ];
 
 const numbers = getRandomValues();
