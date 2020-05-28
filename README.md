@@ -19,25 +19,25 @@
 
 
 ## Design rationale
-**Animations**
-I used CSS animations to visually indicate a match/no match. Setting a duration for the animation meant striking the right balance between too long a delay (the app seeming slow) and too short (not enough time to process the card values). WCAG doesn't specify a standard duration, so I used Material Design <sup>1</sup> for guidance.
+#### Animations
+I used CSS animations to visually indicate a match/no match. Setting a duration for the animation meant striking the right balance between too long a delay (the app seeming slow) and too short (not enough time to process the card values). WCAG doesn't specify a standard duration, so I used [Material Design](https://material.io/design/motion/speed.html#duration) for guidance.
 
-**Colors**
-I chose high-contrast A11Y-compliant color combos<sup>2</sup> to create an accessible theme.
+#### Colors
+I chose high-contrast [A11Y-compliant color combos](https://clrs.cc/a11y/) to create an accessible theme.
 
-**Game categories**
-As I started developing, my very first thought was to create a simple color-matching game. Then I realized that was probably no good for people with color blindness or other vision impairments. So I decided to offer a few additional game styles using random numbers<sup>3</sup> and zodiac signs. ♓️
+#### Game categories
+As I started developing, my very first thought was to create a simple color-matching game. Then I realized that was probably no good for people with color blindness or other vision impairments. So I decided to offer a few additional game styles using [random numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) and zodiac signs. ♓️
 
 ## Notes
 * Built with React.
-* I used [this algorithm](https://stackoverflow.com/a/2450976)<sup>4</sup> to shuffle the card deck. No sense in recreating the wheel!
+* I used [this algorithm](https://stackoverflow.com/a/2450976) to shuffle the card deck. No sense in recreating the wheel!
 * I'm still working on adding tests.
 * I'm also working on reorganizing the CSS, creating individual component stylesheets instead of keeping all styles in one giant, hard-to-navigate file.
 
 
 ## Potential add-ons
 * Add multi-player functionality.
-* Add game categories.
+* Add new game categories.
 * Set game limitations like a timer or max number of tries.
 * Cheat-proof the card values!
 * Let user set preferred grid dimensions.
