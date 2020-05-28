@@ -24,7 +24,7 @@ class App extends React.Component {
     const gameboard = this.state.gameType ? <Gameboard gameReset={this.state.gameReset} gameType={ this.state.gameType } /> : null;
 
     return (
-      <div>
+      <div className='app-wrap'>
         <div className='banner-container'>
           <div className='banner-header-container'>
             <img src={imgSrc} alt='memory logo brain' className='banner-logo' />

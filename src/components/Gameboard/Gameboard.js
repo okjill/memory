@@ -22,7 +22,24 @@ class Gameboard extends React.Component {
   }
 
   createDeck() {
-    const deckData = gameData[this.props.gameType];
+    const getRandomValues = () => {
+      const randomValues = new Set();
+      while (randomValues.size < 12) {
+          const min = Math.ceil(0);
+          const max = Math.floor(1500);
+          const value = Math.floor(Math.random() * (max - min)) + min;
+        randomValues.add(value);
+      };
+      const numbersDeck = [...randomValues];
+      return numbersDeck.concat(numbersDeck.slice(0));
+    };
+
+    let deckData = gameData[this.props.gameType];
+
+    if (this.props.gameType === 'numbers') {
+      deckData = getRandomValues();
+    }
+
     const deck = this.shuffle(deckData);
     this.setState({ deck });
   };
@@ -46,7 +63,7 @@ class Gameboard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // if gameType has changed, reset state
+    // If gameType has changed, reset state
     if (prevProps !== this.props) {
       this.resetGame();
       this.createDeck();
@@ -68,13 +85,9 @@ class Gameboard extends React.Component {
   }
 
   findMatch() {
-    let animationType;
     const newMatch = [];
-    if (this.props.gameType === 'colors') {
-      animationType = 'no-match-colors';
-    } else {
-      animationType = 'no-match';
-    }
+    // If gameType is 'colors', don't set the 'no - match' class since no transition animation is necessary
+    let animationType = this.props.gameType !== 'colors' ? animationType = 'no-match' : '';
 
     if (this.isMatch()) {
       animationType = 'highlight-match';
@@ -92,7 +105,7 @@ class Gameboard extends React.Component {
             this.setState({ winner: true });
           }
         });
-      }, 1000);
+      }, 500);
     });
   }
 
@@ -109,11 +122,12 @@ class Gameboard extends React.Component {
 
     if (this.state.deck) {
       cards = this.state.deck.map((value, id) => {
-        const isMatch = this.state.matches.find(matches => matches.id === id) ? true : false;
         let classNames = [this.props.gameType];
-        const cardData = { value, id, faceup: false, gameType: this.props.gameType };
         const selectedCards = this.state.selectedCards;
+        const isMatch = this.state.matches.find(matches => matches.id === id) ? true : false;
         const isSelected = selectedCards.find(selected => selected.id === id) ? true : false;
+        const cardData = { value, id, faceup: false, gameType: this.props.gameType };
+
         if (isSelected) {
           cardData.faceup = true;
           classNames.push('faceup');
@@ -132,7 +146,7 @@ class Gameboard extends React.Component {
       });
     }
   
-    const winnerWindow = this.state.winner ? <WinnerWindow resetGame={ this.resetGame.bind(this) }/> : null;
+    const winnerWindow = this.state.winner ? <WinnerWindow resetGame={ this.resetGame.bind(this) } /> : null;
 
     return (
       <div id='game-wrapper'>
