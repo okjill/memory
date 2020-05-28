@@ -15,6 +15,7 @@
 * No need to store user data or game results.
 * Player will not use dev tools to cheat.
 * No time limit or max number of tries to win the game.
+* No hard requirement for grid dimensions (6x4 vs. 8x3, for example).
 
 
 ## Design rationale
@@ -39,6 +40,7 @@ As I started developing, my very first thought was to create a simple color-matc
 * Add game categories.
 * Set game limitations like a timer or max number of tries.
 * Cheat-proof the card values!
+* Let user set preferred grid dimensions.
 
 
 ## Resources

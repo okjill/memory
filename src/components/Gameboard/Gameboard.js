@@ -87,7 +87,7 @@ class Gameboard extends React.Component {
   findMatch() {
     const newMatch = [];
     // If gameType is 'colors', don't set the 'no - match' class since no transition animation is necessary
-    let animationType = this.props.gameType !== 'colors' ? animationType = 'no-match' : '';
+    let animationType = this.props.gameType !== 'colors' ? 'no-match' : '';
 
     if (this.isMatch()) {
       animationType = 'highlight-match';
