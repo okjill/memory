@@ -3,9 +3,10 @@ import React from 'react';
 import './App.css';
 
 import Gameboard from '../../components/Gameboard/Gameboard';
-import GameList from '../../components/GameList/GameList';
+import GameMenu from '../GameMenu/GameMenu';
 
 import gameData from '../../gameData';
+import * as imgSrc from '../../assets/memory.png';
 
 class App extends React.Component {
   constructor() {
@@ -24,8 +25,17 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Memory!</h1>
-        <GameList gameTypes={ gameData.games } setGameType={ this.setGameType.bind(this) } />
+        <div className='banner-container'>
+          <div className='banner-header-container'>
+            <img src={imgSrc} alt='memory logo brain' className='banner-logo' />
+            <h1 className='banner-header'>Memory!</h1>
+          </div>
+          <GameMenu
+            className='banner-list'
+            gameTypes={ gameData.games }
+            setGameType={ this.setGameType.bind(this) }
+          />
+        </div>
         {gameboard}
       </div>
     );
