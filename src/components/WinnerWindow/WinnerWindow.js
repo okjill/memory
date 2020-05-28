@@ -1,11 +1,11 @@
 import React from 'react';
 
 class WinnerWindow extends React.Component {
-  handleClick() {
+  handleClick = () => {
     this.props.resetGame();
   }
 
-  render() {
+  render = () => {
     return (
       <div id='overlay'>
         <div id="winnerBanner">

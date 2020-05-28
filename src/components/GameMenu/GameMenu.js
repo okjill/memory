@@ -3,11 +3,11 @@ import React from 'react';
 import GameMenuItem from '../GameMenuItem/GameMenuItem.js';
 
 class GameMenu extends React.Component {
-  handleClick(type) {
+  handleClick = type => {
     this.props.setGameType(type);
   }
 
-  render() {
+  render = () => {
     return (
       <ul className='banner-list'>
         {

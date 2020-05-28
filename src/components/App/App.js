@@ -15,12 +15,12 @@ class App extends React.Component {
     this.state = { gameType: '', gameReset: '' };
   }
 
-  setGameType(type) {
+  setGameType = type => {
     const gameReset = this.state.gameType === type ? true : false;
     this.setState({ gameType: type, gameReset });
   }
 
-  render() {
+  render = () => {
     const gameboard = this.state.gameType ? <Gameboard gameReset={this.state.gameReset} gameType={ this.state.gameType } /> : null;
 
     return (

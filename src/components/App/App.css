@@ -41,19 +41,19 @@ span.zodiac-emoji {
 }
 
 .highlight-match {
-  animation: match 500ms;
+  animation: match 1500ms;
   pointer-events: none;
   cursor: none;
 }
 
 .no-match {
-  animation: no-match 500ms;
+  animation: no-match 1500ms;
   pointer-events: none;
   cursor: none;
 }
 
-.no-match-color {
-  animation: no-match-color 500ms;
+.no-match-zodiac {
+  animation: no-match-zodiac 2000ms;
   pointer-events: none;
   cursor: none;
 }
@@ -104,6 +104,7 @@ span.zodiac-emoji {
 }
 
 .game-container > div:hover {
+  transform: translate3D(0,-1px,0) scale(1.03);
   cursor: pointer;
 }
 
@@ -123,14 +124,23 @@ span.zodiac-emoji {
 @keyframes no-match {
   0% {
     background-color: var(--red);
-  }
-
-  50% {
-    background-color: var(--red);
-    opacity: .5;
+    opacity: 1;
   }
 
   100% {
+    opacity: 0;
+  }
+}
+
+@keyframes no-match-zodiac {
+  0% {
+    background-color: var(--red);
+    font-size: calc(17px + 0.33vw);
+    opacity: 1;
+  }
+
+  100% {
+    font-size: calc(17px + 0.33vw);
     opacity: 0;
   }
 }

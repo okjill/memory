@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Card extends React.Component {
-  handleClick(e, card, gameType) {
+  handleClick = (e, card, gameType) => {
     const element = e.target;
 
     if (gameType === 'colors') {
@@ -11,7 +11,7 @@ class Card extends React.Component {
     this.props.onSelect(card);
   }
 
-  render() {
+  render = () => {
     const card = this.props.data;
     let text = card.faceup ? card.value : '';
     let className = this.props.className;

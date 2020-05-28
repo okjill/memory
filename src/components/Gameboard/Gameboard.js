@@ -17,26 +17,27 @@ class Gameboard extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.createDeck();
   }
 
-  createDeck() {
+  createDeck = () => {
+    const { props: { gameType } } = this;
     const getRandomValues = () => {
       const randomValues = new Set();
       while (randomValues.size < 12) {
-          const min = Math.ceil(0);
-          const max = Math.floor(1500);
-          const value = Math.floor(Math.random() * (max - min)) + min;
+        const min = Math.ceil(0);
+        const max = Math.floor(1500);
+        const value = Math.floor(Math.random() * (max - min)) + min;
         randomValues.add(value);
       };
       const numbersDeck = [...randomValues];
       return numbersDeck.concat(numbersDeck.slice(0));
     };
 
-    let deckData = gameData[this.props.gameType];
+    let deckData = gameData[gameType];
 
-    if (this.props.gameType === 'numbers') {
+    if (gameType === 'numbers') {
       deckData = getRandomValues();
     }
 
@@ -44,7 +45,7 @@ class Gameboard extends React.Component {
     this.setState({ deck });
   };
   
-  shuffle(deck) {
+  shuffle = deck => {
     let currentIndex = deck.length;
     let tempValue, randomIndex;
   
@@ -62,7 +63,7 @@ class Gameboard extends React.Component {
     return deck;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate = prevProps => {
     // If gameType has changed, reset state
     if (prevProps !== this.props) {
       this.resetGame();
@@ -70,7 +71,7 @@ class Gameboard extends React.Component {
     }
   }
 
-  onSelect(card) {
+  onSelect = card => {
     const selectedCards = [...this.state.selectedCards];
 
     if (selectedCards.length !== 2) {
@@ -79,74 +80,103 @@ class Gameboard extends React.Component {
   
     this.setState({ selectedCards }, () => {
       if (this.state.selectedCards.length === 2) {
-        this.findMatch();
+        this.setAnimationType();
       }
     });
   }
 
-  findMatch() {
-    const newMatch = [];
-    // If gameType is 'colors', don't set the 'no - match' class since no transition animation is necessary
-    let animationType = this.props.gameType !== 'colors' ? 'no-match' : '';
-
-    if (this.isMatch()) {
-      animationType = 'highlight-match';
-      this.state.selectedCards.forEach(card => {
-        newMatch.push(card)
-      });
-    }
-
+  handleMatchAnimation = (animationType, selectedCards) => {
     this.setState({ animate: true, animationType }, () => {
-      setTimeout(() => {
-        const matches = [...this.state.matches].concat(newMatch);
-  
-        this.setState({ animate: false, animationType: '', matches, selectedCards: [] }, () => {
-          if (this.state.matches.length === 24) {
-            this.setState({ winner: true });
-          }
-        });
-      }, 500);
+      setTimeout(this.flipCardDown, 1000);
+      if (this.isMatch()) setTimeout(() => this.saveMatch(selectedCards), 1000);
     });
   }
 
-  resetGame() {
-    this.setState({ deck: [], matches: [], selectedCards: [], winner: false });
+  flipCardDown = () => {
+    this.setState({
+      animate: false,
+      animationType: '',
+      selectedCards: []
+    });
   }
 
-  isMatch() {
-    return this.state.selectedCards[0].value === this.state.selectedCards[1].value ? true : false;
+  saveMatch = newMatch => {
+    const { state: { matches } } = this;
+    const allMatches = matches
+      .concat(newMatch
+      .map(card => card));
+
+    if (allMatches.length === 24) {
+      this.setState({ winner: true });
+    }
+
+    this.setState({ matches: allMatches });
   }
 
-  render() {
+  setAnimationType = () => {
+    let animationType;
+    
+    // If gameType is 'colors', no transition animation is necessary
+    if (this.props.gameType === 'numbers') {
+      animationType = 'no-match';
+    } else if (this.props.gameType === 'zodiac') {
+      animationType = 'no-match-zodiac';
+    }
+
+    if (this.isMatch()) {
+      animationType = 'highlight-match';
+    }
+
+    this.handleMatchAnimation(animationType, this.state.selectedCards);
+  }
+
+  resetGame = () => {
+    this.setState({
+      deck: [],
+      matches: [],
+      selectedCards: [],
+      winner: false
+    });
+  }
+
+  isMatch = () => {
+    const { state: { selectedCards } } = this;
+    return selectedCards[0].value === selectedCards[1].value ? true : false;
+  }
+
+  render = () => {
     let cards = [];
+    const {
+      props: { gameType },
+      state: { animate, animationType, deck, matches, selectedCards, winner }
+		} = this;
 
-    if (this.state.deck) {
-      cards = this.state.deck.map((value, id) => {
-        let classNames = [this.props.gameType];
-        const selectedCards = this.state.selectedCards;
-        const isMatch = this.state.matches.find(matches => matches.id === id) ? true : false;
+    if (deck) {
+      cards = deck.map((value, id) => {
+        let classNames = [gameType];
+        const isMatch = matches.find(matches => matches.id === id) ? true : false;
         const isSelected = selectedCards.find(selected => selected.id === id) ? true : false;
-        const cardData = { value, id, faceup: false, gameType: this.props.gameType };
+        const cardData = { value, id, faceup: false, gameType };
 
         if (isSelected) {
           cardData.faceup = true;
           classNames.push('faceup');
         }
   
-        if (isSelected && this.state.animate) {
-          classNames.push(this.state.animationType);
+        if (isSelected && animate) {
+          classNames.push(animationType);
         }
   
         return <Card
-          key={ id }
-          className={isMatch ? 'matched' : classNames.join(' ')}
+          className={ isMatch ? 'matched' : classNames.join(' ') }
           data={ cardData }
+          key={ id }
           onSelect={ this.onSelect.bind(this) }
         />;
       });
     }
   
-    const winnerWindow = this.state.winner ? <WinnerWindow resetGame={ this.resetGame.bind(this) } /> : null;
+    const winnerWindow = winner ? <WinnerWindow resetGame={ this.resetGame.bind(this) } /> : null;
 
     return (
       <div id='game-wrapper'>

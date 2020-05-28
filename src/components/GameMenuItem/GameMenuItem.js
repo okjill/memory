@@ -6,11 +6,11 @@ import * as numbers from '../../assets/brain_white.png';
 
 
 class GameMenuItem extends React.Component {
-  handleClick(type) {
+  handleClick = type => {
     this.props.setGameType(type);
   }
 
-  render() {
+  render = () => {
     const type = this.props.className;
     const images = {
       colors,
