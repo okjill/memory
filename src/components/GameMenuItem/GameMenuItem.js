@@ -1,8 +1,8 @@
 import React from 'react';
 
-import * as colors from '../../assets/brain_aqua.png';
-import * as zodiac from '../../assets/brain_blue.png';
-import * as numbers from '../../assets/brain_white.png';
+import * as colors from '../../assets/colors.png';
+import * as zodiac from '../../assets/zodiac.png';
+import * as numbers from '../../assets/numbers.png';
 
 
 class GameMenuItem extends React.Component {
@@ -22,9 +22,9 @@ class GameMenuItem extends React.Component {
     return (
       <li
         className='banner-list-item'
-        onClick={() => this.handleClick(type)}
+        onClick={ () => this.handleClick(type) }
       >
-        <img className='banner-list-image' src={imgSrc} alt='brain logo' />
+        <img className='banner-list-image' src={ imgSrc } alt='brain logo' />
       </li>
     );
   }

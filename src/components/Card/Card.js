@@ -22,9 +22,9 @@ class Card extends React.Component {
 
     return (
       <div
-        id={card.value}
-        className={className}
-        onClick={(e) => this.handleClick(e, card, card.gameType)}
+        id={ card.value }
+        className={ className }
+        onClick={ (e) => this.handleClick(e, card, card.gameType) }
       >
         {text}
       </div>
