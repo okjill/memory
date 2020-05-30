@@ -22,8 +22,8 @@ h1 {
   background-color: var(--blue);
 }
 
-.game-container > div.zodiac-card {
-  background-color: var(--blue);
+.game-container > div.zodiac-card.faceup {
+  background-color: var(--white);
   font-size: calc(17px + 0.33vw);
   text-align: center;
 }
@@ -63,12 +63,13 @@ span.zodiac-emoji {
 }
 
 .faceup {
+  background-color: var(--white);
   border: 3px solid var(--navy);
   pointer-events: none;
 }
 
 .faceup.numbers {
-  color: var(--white);
+  color: var(--navy);
 }
 
 .faceup.zodiac img {
