@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/memory/static/css/main.1eeee309.chunk.css",
+    "main.js": "/memory/static/js/main.eeb2b830.chunk.js",
+    "main.js.map": "/memory/static/js/main.eeb2b830.chunk.js.map",
+    "runtime-main.js": "/memory/static/js/runtime-main.31103d8b.js",
+    "runtime-main.js.map": "/memory/static/js/runtime-main.31103d8b.js.map",
+    "static/js/2.479bf021.chunk.js": "/memory/static/js/2.479bf021.chunk.js",
+    "static/js/2.479bf021.chunk.js.map": "/memory/static/js/2.479bf021.chunk.js.map",
+    "index.html": "/memory/index.html",
+    "precache-manifest.b4516c68c56647c635d9dbde001da95d.js": "/memory/precache-manifest.b4516c68c56647c635d9dbde001da95d.js",
+    "service-worker.js": "/memory/service-worker.js",
+    "static/css/main.1eeee309.chunk.css.map": "/memory/static/css/main.1eeee309.chunk.css.map",
+    "static/js/2.479bf021.chunk.js.LICENSE.txt": "/memory/static/js/2.479bf021.chunk.js.LICENSE.txt",
+    "static/media/colors.png": "/memory/static/media/colors.b3c4a248.png",
+    "static/media/memory.png": "/memory/static/media/memory.babea8b6.png",
+    "static/media/numbers.png": "/memory/static/media/numbers.96052716.png",
+    "static/media/zodiac.png": "/memory/static/media/zodiac.9b9dce84.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.31103d8b.js",
+    "static/js/2.479bf021.chunk.js",
+    "static/css/main.1eeee309.chunk.css",
+    "static/js/main.eeb2b830.chunk.js"
+  ]
+}
